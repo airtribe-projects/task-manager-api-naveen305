@@ -25,7 +25,7 @@ export const updateTask = (id, { title, description, completed }) => {
 
     const existingTask = data.tasks[taskIndex];
     data.tasks[taskIndex] = {
-        ...existingTask,     // keep old fields
+        ...existingTask,     
         ...(title !== undefined && { title }),
         ...(description !== undefined && { description }),
         ...(completed !== undefined && { completed })
