@@ -23,3 +23,26 @@ export const createTask = (req,res) => {
     const newTask = taskService.createTask({title, description});
     res.status(200).json( newTask );
 }
+
+export const updateTask = (req, res) => {
+    const id = Number(req.params.id);
+    const { title, description, completed } = req.body;
+  
+    const updated = taskService.updateTask(id, { title, description, completed });
+  
+    if (!updated) {
+      return res.status(404).json( "Task not found" );
+    }
+  
+    res.json( updated );
+  };
+
+  export const deleteTask = (req, res) => {
+    const deleted = taskService.deleteTask(Number(req.params.id));
+  
+    if (!deleted)
+      return res.status(404).json("Task not found" );
+  
+    res.json("Task deleted successfully");
+  };
+  
